@@ -5,72 +5,412 @@
         size: a4 landscape;
         margin: 20px;
         @bottom-center {
-           content: 'Page 'counter(page);
+            content: 'Page 'counter(page);
+            color: #919699;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.3em;
         }
     }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-weight: normal;
+      font-style: normal;
+      src: url(https://raw.githubusercontent.com/IBM/plex/master/IBM-Plex-Sans/fonts/complete/ttf/IBMPlexSans-Light.ttf);
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-weight: bold;
+      font-style: normal;
+      src: url(https://raw.githubusercontent.com/IBM/plex/blob/master/IBM-Plex-Sans/fonts/complete/ttf/IBMPlexSans-Bold.ttf?raw=true);
+    }
+
+    @font-face {
+      font-family: 'Playfair Display';
+      font-weight: normal;
+      font-style: normal;
+      src: url(http://themes.googleusercontent.com/static/fonts/playfairdisplay/v7/2NBgzUtEeyB-Xtpr9bm1Cczai8e7xzqnKiVb1EwOy0E.ttf);
+    }
+
+    html,
+    body {
+      font-size: 10px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #3E4345;
+    }
+
+    .container {
+      /* min-height: 92vh; */
+      padding: 3em;
+    }
+
+    .report-header {
+      display: table;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 3em;
+    }
+
+    .report-header>* {
+      display: table-cell;
+    }
+
+    .report-header img {
+      width: 8.9em;
+      height: 5.6em;
+      display: block;
+      margin-bottom: 0.7em;
+    }
+
+    .report-header .page-title {
+      text-align: center;
+      font-size: 2.5em;
+      font-family: 'Playfair Display', serif;
+      color: #3E4345;
+    }
+
+    .report-header .report-info {
+      vertical-align: bottom;
+      text-align: right;
+    }
+
+    .report-body .payment-type-detail {
+      font-size: 1.5em;
+      margin-bottom: 1.5em;
+    }
+
+    .logo .logo-title {
+      color: #2B3A8B;
+      font-weight: bold;
+    }
+
+    /* footer {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    footer .page-number {
+      color: #919699;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.3em;
+    } */
+
+    /* main .report-info {
+      margin: 2.1em 0;
+      color: #5E6366;
+    }
+    main .report-info p {
+      display: inline-block;
+      margin-bottom: 2.1em;
+    }
+    main .report-info .filter-date {
+      float: left;
+    }
+    main .report-info .report-date {
+      float: right;
+    }
+    main .report-info .total-reservations .value {
+      font-weight: 600;
+    } */
+
     table {
-        -fs-table-paginate: paginate;
+      border-collapse: collapse;
+      width: 100%;
+      -fs-table-paginate: paginate;
+    }
+
+    th,
+    td {
+      padding: 0.85em;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    th {
+      text-align: left;
+      color: #9d9ea2;
+      background: #f2f3f5;
+    }
+
+    td {
+      vertical-align: baseline;
+      word-wrap: break-word;
+    }
+
+    tbody tr:first-child td {
+      border-top: none;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody td {
+      border: 0.01em solid #C6CACC;
+    }
+
+
+    tfoot {
+      background: #f2f3f5;
+      font-weight: 600;
+      color: black;
+    }
+
+    tfoot tr td:first-child {
+      border-right: none;
+    }
+
+    tfoot tr td {
+      font-weight: 600;
+    }
+
+    tfoot tr:first-child,
+    tfoot tr:last-child {
+      border-top: 0.1em solid #8c8e8d;
+      border-bottom: 0.1em solid #8c8e8d;
+    }
+
+    thead th,
+    tfoot tr td {
+      border: 0.1em solid #8c8e8d;
+    }
+
+    .payment-type-table:last-child {
+      margin-bottom: 4em;
+    }
+
+    .payment-type-table-footer tbody tr, .payment-type-table-footer tbody tr td {
+      border-style: hidden;
+      font-weight: 600;
+      color: black;
+    }
+    .payment-type-table-footer thead, .payment-type-table-footer tfoot {
+      visibility: collapse;
+    }
+
+    @media print {
+      .container {
+        padding: 0;
+      }
+
+      .report-header .page-title {
+        position: absolute;
+        top: 38px;
+      }
     }
 </style>
 </head>
 <body>
-    <div>
-      <div>
-        <span>PHU QUOC PARADISE RESORT &amp; VILLAS</span>
+    <div class="container">
+    <div class="report-header">
+      <div class="logo">
+        <img src="logo.png">
+        <span class="logo-title">PHU QUOC PARADISE RESORT &amp; VILLAS</span>
       </div>
-      <h1>CASH CLOSURE SUMMARY REPORT</h1>
-      <div>
+      <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
+      <div class="report-info">
         <span>Report Date: 14:26 30/08/2019</span><br/>
         <span>Cash RegID: 123</span><br/>
         <span>Closure Session Ref: 66</span><br/>
         <span>Closed by: User2</span>
       </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 200px">Payment Code</th>
-          <th style="width: 150px">Start Float</th>
-          <th style="width: 150px">Actual Received</th>
-          <th style="width: 150px">Actual Paid Out</th>
-          <th style="width: 150px">Counted</th>
-          <th style="width: 150px">Balance</th>
-          <th style="width: 300px">Notes</th>
-        </tr>
-      </thead>
+    <div class="report-body">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 200px">Payment Code</th>
+            <th style="width: 150px">Start Float</th>
+            <th style="width: 150px">Actual Received</th>
+            <th style="width: 150px">Actual Paid Out</th>
+            <th style="width: 150px">Counted</th>
+            <th style="width: 150px">Balance</th>
+            <th style="width: 300px">Notes</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr>
-          <td>Cash VND</td>
-          <td>20,000,000</td>
-          <td>35,000,000</td>
-          <td>-5,000,000</td>
-          <td>50,000,000</td>
-          <td>0</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>American Express</td>
-          <td>5,000,000</td>
-          <td>15,000,000</td>
-          <td>0</td>
-          <td>20,000,000</td>
-          <td>0</td>
-          <td></td>
-        </tr>
-      </tbody>
+        <tbody>
+          <tr>
+            <td>Cash VND</td>
+            <td>20,000,000</td>
+            <td>35,000,000</td>
+            <td>-5,000,000</td>
+            <td>50,000,000</td>
+            <td>0</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>American Express</td>
+            <td>5,000,000</td>
+            <td>15,000,000</td>
+            <td>0</td>
+            <td>20,000,000</td>
+            <td>0</td>
+            <td></td>
+          </tr>
+        </tbody>
 
-      <tfoot>
-        <tr>
-          <td>Total</td>
-          <td>25,000,000</td>
-          <td>50,000,000</td>
-          <td>-5,000,000</td>
-          <td>70,000,000</td>
-          <td>0</td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td>25,000,000</td>
+            <td>50,000,000</td>
+            <td>-5,000,000</td>
+            <td>70,000,000</td>
+            <td>0</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="report-header">
+      <div class="logo">
+        <img src="logo.png">
+        <span class="logo-title">PHU QUOC PARADISE RESORT &amp; VILLAS</span>
+      </div>
+      <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
+      <div class="report-info">
+        <span>Report Date: 14:26 30/08/2019</span><br/>
+        <span>Cash RegID: 123</span><br/>
+        <span>Closure Session Ref: 66</span><br/>
+        <span>Closed by: User2</span>
+      </div>
+    </div>
+    <div class="report-body">
+      <h6 class="payment-type-detail">
+        Cash VND - Start Float: 20,000,000
+      </h6>
+      <table class="payment-type-table">
+        <thead>
+          <tr>
+            <th style="width: 100px">Date</th>
+            <th style="width: 100px">Time</th>
+            <th style="width: 100px">Room</th>
+            <th style="width: 150px">Guest</th>
+            <th style="width: 150px">Amount</th>
+            <th style="width: 300px">Reference</th>
+            <th style="width: 300px">Add. Text</th>
+            <th style="width: 100px">User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>01/07/2019</td>
+            <td>14:20</td>
+            <td>203</td>
+            <td>John Creek</td>
+            <td>20,000,000</td>
+            <td>additional fee for late checkout_Room 203</td>
+            <td></td>
+            <td>User 1</td>
+          </tr>
+          <tr>
+            <td>01/07/2019</td>
+            <td>14:20</td>
+            <td>203</td>
+            <td>John Creek</td>
+            <td>20,000,000</td>
+            <td>additional fee for late checkout_Room 203</td>
+            <td></td>
+            <td>User 1</td>
+          </tr>
+
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>30,000,000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <h6 class="payment-type-detail">
+        American Express - Start Float: 5,000,000
+      </h6>
+      <table class="payment-type-table">
+        <thead>
+          <tr>
+            <th style="width: 100px">Date</th>
+            <th style="width: 100px">Time</th>
+            <th style="width: 100px">Room</th>
+            <th style="width: 150px">Guest</th>
+            <th style="width: 150px">Amount</th>
+            <th style="width: 300px">Reference</th>
+            <th style="width: 300px">Add. Text</th>
+            <th style="width: 100px">User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>01/07/2019</td>
+            <td>17:30</td>
+            <td>667</td>
+            <td>Henry Johnson</td>
+            <td>15,000,000</td>
+            <td>additional fee for late checkout_Room 667</td>
+            <td></td>
+            <td>User 2</td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>15,000,000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="report-footer">
+      <hr>
+      <table class="payment-type-table-footer">
+        <thead>
+          <tr>
+            <th style="width: 100px">Date</th>
+            <th style="width: 100px">Time</th>
+            <th style="width: 100px">Room</th>
+            <th style="width: 150px">Guest</th>
+            <th style="width: 150px">Amount</th>
+            <th style="width: 300px">Reference</th>
+            <th style="width: 300px">Add. Text</th>
+            <th style="width: 100px">User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>TOTAL</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>45,000,000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>
