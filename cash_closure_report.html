@@ -1,35 +1,38 @@
 <html>
 <head>
 <style>
-    @page {
-        size: a4 landscape;
-        margin: 20px;
-        @bottom-center {
-            content: 'Page 'counter(page);
-            color: #919699;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 1.3em;
-        }
+  @page {
+    size: a4 landscape;
+    margin: 20px;
+    @bottom-center {
+      content: 'Page 'counter(page);
+      color: #919699;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.3em;
     }
+  }
+  table {
+    -fs-table-paginate: paginate;
+  }
 </style>
 </head>
 <body>
-    <div class="container">
-    <div class="report-header">
-      <div class="logo">
+    <div>
+    <div>
+      <div>
         <img src="logo.png">
-        <span class="logo-title">PHU QUOC PARADISE RESORT &amp; VILLAS</span>
+        <span>PHU QUOC PARADISE RESORT &amp; VILLAS</span>
       </div>
-      <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
-      <div class="report-info">
+      <h1>CASH CLOSURE SUMMARY REPORT</h1>
+      <div>
         <span>Report Date: 14:26 30/08/2019</span><br/>
         <span>Cash RegID: 123</span><br/>
         <span>Closure Session Ref: 66</span><br/>
         <span>Closed by: User2</span>
       </div>
     </div>
-    <div class="report-body">
+    <div>
       <table>
         <thead>
           <tr>
@@ -79,25 +82,25 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="report-header">
-      <div class="logo">
+  <div>
+    <div>
+      <div>
         <img src="logo.png">
-        <span class="logo-title">PHU QUOC PARADISE RESORT &amp; VILLAS</span>
+        <span>PHU QUOC PARADISE RESORT &amp; VILLAS</span>
       </div>
-      <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
-      <div class="report-info">
+      <h1>CASH CLOSURE DETAILS REPORT</h1>
+      <div>
         <span>Report Date: 14:26 30/08/2019</span><br/>
         <span>Cash RegID: 123</span><br/>
         <span>Closure Session Ref: 66</span><br/>
         <span>Closed by: User2</span>
       </div>
     </div>
-    <div class="report-body">
-      <h6 class="payment-type-detail">
+    <div>
+      <h6>
         Cash VND - Start Float: 20,000,000
       </h6>
-      <table class="payment-type-table">
+      <table>
         <thead>
           <tr>
             <th style="width: 100px">Date</th>
@@ -149,10 +152,10 @@
         </tfoot>
       </table>
 
-      <h6 class="payment-type-detail">
+      <h6>
         American Express - Start Float: 5,000,000
       </h6>
-      <table class="payment-type-table">
+      <table>
         <thead>
           <tr>
             <th style="width: 100px">Date</th>
@@ -193,9 +196,9 @@
         </tfoot>
       </table>
     </div>
-    <div class="report-footer">
+    <div>
       <hr>
-      <table class="payment-type-table-footer">
+      <table>
         <thead>
           <tr>
             <th style="width: 100px">Date</th>
