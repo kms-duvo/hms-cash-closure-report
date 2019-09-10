@@ -42,6 +42,7 @@
 
   .report-header {
     display: table;
+    table-layout: fixed;
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 3em;
@@ -83,6 +84,7 @@
   table {
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
     -fs-table-paginate: paginate;
   }
 
@@ -95,8 +97,8 @@
 
   th {
     text-align: left;
-    color: #9d9ea2;
-    background: #f2f3f5;
+    color: black;
+    font-weight: 600;
   }
 
   td {
@@ -118,7 +120,6 @@
 
 
   tfoot {
-    background: #f2f3f5;
     font-weight: 600;
     color: black;
   }
@@ -131,19 +132,17 @@
     font-weight: 600;
   }
 
-  tfoot tr:first-child,
-  tfoot tr:last-child {
-    border-top: 0.1em solid #8c8e8d;
-    border-bottom: 0.1em solid #8c8e8d;
-  }
-
   thead th,
   tfoot tr td {
-    border: 0.1em solid #8c8e8d;
+    border: 0.1em solid #C6CACC;
   }
 
   .payment-type-table:last-child {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
+  }
+
+  .payment-type-table-footer {
+    border-style: hidden;
   }
 
   .payment-type-table-footer tbody tr, .payment-type-table-footer tbody tr td {
@@ -153,6 +152,7 @@
   }
   .payment-type-table-footer thead, .payment-type-table-footer tfoot {
     visibility: collapse;
+    border-style: hidden;
   }
 </style>
 </head>
@@ -175,7 +175,7 @@
       <table>
         <thead>
           <tr>
-            <th style="width: 200px">Payment Code</th>
+            <th style="width: 220px">Payment Code</th>
             <th style="width: 150px">Start Float</th>
             <th style="width: 150px">Actual Received</th>
             <th style="width: 150px">Actual Paid Out</th>
@@ -243,12 +243,12 @@
         <thead>
           <tr>
             <th style="width: 100px">Date</th>
-            <th style="width: 100px">Time</th>
-            <th style="width: 100px">Room</th>
+            <th style="width: 80px">Time</th>
+            <th style="width: 80px">Room</th>
             <th style="width: 150px">Guest</th>
             <th style="width: 150px">Amount</th>
             <th style="width: 300px">Reference</th>
-            <th style="width: 300px">Add. Text</th>
+            <th style="width: 200px">Add. Text</th>
             <th style="width: 100px">User</th>
           </tr>
         </thead>
@@ -298,12 +298,12 @@
         <thead>
           <tr>
             <th style="width: 100px">Date</th>
-            <th style="width: 100px">Time</th>
-            <th style="width: 100px">Room</th>
+            <th style="width: 80px">Time</th>
+            <th style="width: 80px">Room</th>
             <th style="width: 150px">Guest</th>
             <th style="width: 150px">Amount</th>
             <th style="width: 300px">Reference</th>
-            <th style="width: 300px">Add. Text</th>
+            <th style="width: 200px">Add. Text</th>
             <th style="width: 100px">User</th>
           </tr>
         </thead>
@@ -341,19 +341,19 @@
         <thead>
           <tr>
             <th style="width: 100px">Date</th>
-            <th style="width: 100px">Time</th>
-            <th style="width: 100px">Room</th>
+            <th style="width: 80px">Time</th>
+            <th style="width: 80px">Room</th>
             <th style="width: 150px">Guest</th>
             <th style="width: 150px">Amount</th>
             <th style="width: 300px">Reference</th>
-            <th style="width: 300px">Add. Text</th>
+            <th style="width: 200px">Add. Text</th>
             <th style="width: 100px">User</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>TOTAL</td>
+            <td>Total</td>
             <td></td>
             <td></td>
             <td></td>
