@@ -21,7 +21,7 @@
     font-style: normal;
     src: url(http://themes.googleusercontent.com/static/fonts/playfairdisplay/v7/2NBgzUtEeyB-Xtpr9bm1Cczai8e7xzqnKiVb1EwOy0E.ttf);
   }
-
+  
   @page {
     size: a4 landscape;
     margin: 0px 20px 50px 20px;
@@ -158,10 +158,10 @@
     visibility: collapse;
     border-style: hidden;
   }
-
+  
   page-after {
     display: block;
-    page-break-after: always;
+    page-break-after: always;	
   }
 </style>
 </head>
@@ -174,10 +174,10 @@
       </div>
       <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
       <div class="report-info">
-        <span th:text="'Report Date: ' + ${reportDate}"></span><br/>
-        <span th:text="'Cash RegID: ' + ${cashRegisterId}"></span><br/>
-        <span th:text="'Closure Session Ref: ' + ${closureRef}"></span><br/>
-        <span th:text="'Closed by: ' + ${closedBy}"></span>
+        <span>Report Date: 14:26 30/08/2019</span><br/>
+        <span>Cash RegID: 123</span><br/>
+        <span>Closure Session Ref: 66</span><br/>
+        <span>Closed by: User2</span>
       </div>
     </div>
     <div class="report-body">
@@ -193,32 +193,43 @@
             <th style="width: 300px">Notes</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr th:each="summary: ${summaryReport.summaries}">
-            <td th:text="${summary.paymentType}"></td>
-            <td th:text="${#numbers.formatInteger(summary.startFloat,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summary.received,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summary.paidOut,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summary.counted,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summary.balance,1,'COMMA')}"></td>
-            <td th:text="${summary.note}"></td>
+          <tr>
+            <td>Cash VND</td>
+            <td>20,000,000</td>
+            <td>35,000,000</td>
+            <td>-5,000,000</td>
+            <td>50,000,000</td>
+            <td>0</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>American Express</td>
+            <td>5,000,000</td>
+            <td>15,000,000</td>
+            <td>0</td>
+            <td>20,000,000</td>
+            <td>0</td>
+            <td></td>
           </tr>
         </tbody>
+
         <tfoot>
           <tr>
             <td>Total</td>
-            <td th:text="${#numbers.formatInteger(summaryReport.totalStartFloat,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summaryReport.totalReceived,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summaryReport.totalPaidOut,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summaryReport.totalCounted,1,'COMMA')}"></td>
-            <td th:text="${#numbers.formatInteger(summaryReport.totalBalance,1,'COMMA')}"></td>
+            <td>25,000,000</td>
+            <td>50,000,000</td>
+            <td>-5,000,000</td>
+            <td>70,000,000</td>
+            <td>0</td>
             <td></td>
           </tr>
         </tfoot>
       </table>
     </div>
   </div>
-
+  
   <page-after></page-after>
 
   <div class="container">
@@ -229,55 +240,111 @@
       </div>
       <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
       <div class="report-info">
-        <span th:text="'Report Date: ' + ${reportDate}"></span><br/>
-        <span th:text="'Cash RegID: ' + ${cashRegisterId}"></span><br/>
-        <span th:text="'Closure Session Ref: ' + ${closureRef}"></span><br/>
-        <span th:text="'Closed by: ' + ${closedBy}"></span>
+        <span>Report Date: 14:26 30/08/2019</span><br/>
+        <span>Cash RegID: 123</span><br/>
+        <span>Closure Session Ref: 66</span><br/>
+        <span>Closed by: User2</span>
       </div>
     </div>
     <div class="report-body">
-      <div th:each="detail: ${detailsReport}">
-        <h6 class="payment-type-detail" th:text="${detail.paymentType + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
-        </h6>
-        <table class="payment-type-table">
-          <thead>
-            <tr>
-              <th style="width: 100px">Date</th>
-              <th style="width: 100px">Time</th>
-              <th style="width: 100px">Room</th>
-              <th style="width: 150px">Guest</th>
-              <th style="width: 150px">Amount</th>
-              <th style="width: 300px">Reference</th>
-              <th style="width: 300px">Add. Text</th>
-              <th style="width: 100px">User</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="transaction: ${detail.transactions}">
-              <td th:text="${#dates.format(transaction.createdAt, 'dd/MM/yyyy')}"></td>
-              <td th:text="${#dates.format(transaction.createdAt, 'HH:mm')}"></td>
-              <td th:text="${transaction.room}"></td>
-              <td th:text="${transaction.room}"></td>
-              <td th:text="${#numbers.formatInteger(transaction.amount,1,'COMMA')}"></td>
-              <td th:text="${transaction.reference}"></td>
-              <td th:text="${transaction.note}"></td>
-              <td th:text="${transaction.createdBy}"></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Total</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td th:text="${#numbers.formatInteger(detail.totalAmount,1,'COMMA')}"></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+      <h6 class="payment-type-detail">
+        Cash VND - Start Float: 20,000,000
+      </h6>
+      <table class="payment-type-table">
+        <thead>
+          <tr>
+            <th style="width: 100px">Date</th>
+            <th style="width: 100px">Time</th>
+            <th style="width: 100px">Room</th>
+            <th style="width: 150px">Guest</th>
+            <th style="width: 150px">Amount</th>
+            <th style="width: 300px">Reference</th>
+            <th style="width: 300px">Add. Text</th>
+            <th style="width: 100px">User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>01/07/2019</td>
+            <td>14:20</td>
+            <td>203</td>
+            <td>John Creek</td>
+            <td>20,000,000</td>
+            <td>additional fee for late checkout_Room 203</td>
+            <td></td>
+            <td>User 1</td>
+          </tr>
+          <tr>
+            <td>01/07/2019</td>
+            <td>14:20</td>
+            <td>203</td>
+            <td>John Creek</td>
+            <td>20,000,000</td>
+            <td>additional fee for late checkout_Room 203</td>
+            <td></td>
+            <td>User 1</td>
+          </tr>
+
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>30,000,000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <h6 class="payment-type-detail">
+        American Express - Start Float: 5,000,000
+      </h6>
+      <table class="payment-type-table">
+        <thead>
+          <tr>
+            <th style="width: 100px">Date</th>
+            <th style="width: 100px">Time</th>
+            <th style="width: 100px">Room</th>
+            <th style="width: 150px">Guest</th>
+            <th style="width: 150px">Amount</th>
+            <th style="width: 300px">Reference</th>
+            <th style="width: 300px">Add. Text</th>
+            <th style="width: 100px">User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>01/07/2019</td>
+            <td>17:30</td>
+            <td>667</td>
+            <td>Henry Johnson</td>
+            <td>15,000,000</td>
+            <td>additional fee for late checkout_Room 667</td>
+            <td></td>
+            <td>User 2</td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>15,000,000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
     <div class="report-footer">
       <hr/>
@@ -288,7 +355,7 @@
             <td style="width: 100px"></td>
             <td style="width: 100px"></td>
             <td style="width: 170px"></td>
-            <td style="width: 150px" th:text="${#numbers.formatInteger(totalAmount,1,'COMMA')}"></td>
+            <td style="width: 150px">45,000,000</td>
             <td style="width: 300px"></td>
             <td style="width: 300px"></td>
             <td style="width: 100px"></td>
