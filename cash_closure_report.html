@@ -254,8 +254,8 @@
           </thead>
           <tbody>
             <tr th:each="transaction: ${detail.transactions}">
-              <td th:text="${#dates.format(transaction.createdAt, 'dd/MM/yyyy')}"></td>
-              <td th:text="${#dates.format(transaction.createdAt, 'HH:mm')}"></td>
+              <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'dd/MM/yyyy')}"></td>
+              <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'HH:mm')}"></td>
               <td th:text="${transaction.room}"></td>
               <td th:text="${transaction.room}"></td>
               <td th:text="${#numbers.formatInteger(transaction.amount,1,'COMMA')}"></td>
