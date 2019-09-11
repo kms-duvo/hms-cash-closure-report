@@ -123,22 +123,18 @@
     border: 0.1em solid #3E4345;
   }
 
-  tfoot {
-    font-weight: 600;
-    color: black;
-  }
-
-  tfoot tr td:first-child {
+  tbody tr:last-child td:first-child {
     border-right: none;
   }
 
-  tfoot tr td {
-    font-weight: 600;
-  }
-
-  thead th,
-  tfoot tr td {
+  thead th {
     border: 0.1em solid #3E4345;
+  }
+  
+  tbody tr:last-child td {
+    border: 0.1em solid #3E4345;
+    font-weight: 600;
+    color: black;
   }
 
   .payment-type-table:last-child {
@@ -153,10 +149,6 @@
     border-style: hidden;
     font-weight: 600;
     color: black;
-  }
-  .payment-type-table-footer thead, .payment-type-table-footer tfoot {
-    visibility: collapse;
-    border-style: hidden;
   }
 
   page-after {
@@ -203,8 +195,6 @@
             <td th:text="${#numbers.formatInteger(summary.balance,1,'COMMA')}"></td>
             <td th:text="${summary.note}"></td>
           </tr>
-        </tbody>
-        <tfoot>
           <tr>
             <td>Total</td>
             <td th:text="${#numbers.formatInteger(summaryReport.totalStartFloat,1,'COMMA')}"></td>
@@ -214,7 +204,7 @@
             <td th:text="${#numbers.formatInteger(summaryReport.totalBalance,1,'COMMA')}"></td>
             <td></td>
           </tr>
-        </tfoot>
+        </tbody>
       </table>
     </div>
   </div>
@@ -263,8 +253,6 @@
               <td th:text="${transaction.note}"></td>
               <td th:text="${transaction.createdBy}"></td>
             </tr>
-          </tbody>
-          <tfoot>
             <tr>
               <td>Total</td>
               <td></td>
@@ -275,7 +263,7 @@
               <td></td>
               <td></td>
             </tr>
-          </tfoot>
+          </tbody>
         </table>
       </div>
     </div>
