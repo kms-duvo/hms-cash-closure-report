@@ -24,7 +24,7 @@
 
   @page {
     size: a4 landscape;
-    margin: 0px 20px 50px 20px;
+    margin: 20px 20px 50px 20px;
     font-family: 'IBM Plex Sans', sans-serif;
     @bottom-center {
       content: 'Page 'counter(page);
@@ -91,7 +91,6 @@
     border-collapse: collapse;
     width: 100%;
     -fs-table-paginate: paginate;
-    margin-top: 10px;
   }
 
   th,
@@ -248,7 +247,7 @@
               <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'dd/MM/yyyy')}"></td>
               <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'HH:mm')}"></td>
               <td th:text="${transaction.room}"></td>
-              <td th:text="${transaction.room}"></td>
+              <td th:text="${transaction.guest}"></td>
               <td th:text="${#numbers.formatInteger(transaction.amount,1,'COMMA')}"></td>
               <td th:text="${transaction.reference}"></td>
               <td th:text="${transaction.note}"></td>
