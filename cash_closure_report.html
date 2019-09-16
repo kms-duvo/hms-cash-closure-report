@@ -180,7 +180,7 @@
       <table>
         <thead>
           <tr>
-            <th style="width: 200px">Payment Code</th>
+            <th style="width: 200px">Payment Name</th>
             <th style="width: 150px">Start Float</th>
             <th style="width: 150px">Actual Received</th>
             <th style="width: 150px">Actual Paid Out</th>
@@ -191,7 +191,7 @@
         </thead>
         <tbody>
           <tr th:each="summary: ${summaryReport.summaries}">
-            <td th:text="${summary.paymentType}"></td>
+            <td th:text="${summary.paymentName}"></td>
             <td th:text="${#numbers.formatInteger(summary.startFloat,1,'COMMA')}"></td>
             <td th:text="${#numbers.formatInteger(summary.received,1,'COMMA')}"></td>
             <td th:text="${#numbers.formatInteger(summary.paidOut,1,'COMMA')}"></td>
@@ -231,7 +231,7 @@
     </div>
     <div class="report-body">
       <div th:each="detail: ${detailsReport}">
-        <h6 class="payment-type-detail" th:text="${detail.paymentType + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
+        <h6 class="payment-type-detail" th:text="${detail.paymentName + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
         </h6>
         <table class="payment-type-table">
           <thead>
