@@ -26,6 +26,7 @@
     size: a4 landscape;
     margin: 20px 20px 50px 20px;
     font-family: 'IBM Plex Sans', sans-serif;
+
     @bottom-center {
       content: 'Page 'counter(page);
       font-family: 'IBM Plex Sans', sans-serif;
@@ -35,7 +36,7 @@
 
   html,
   body {
-    font-size: 10px;
+    font-size: 12px;
     font-family: 'IBM Plex Sans', sans-serif;
     color: black;
   }
@@ -50,11 +51,11 @@
     display: table;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
   }
 
   .report-header>* {
-    display: table-cell;
+    display: block;
   }
 
   .report-header img {
@@ -77,8 +78,8 @@
   }
 
   .report-body .payment-type-detail {
-    font-size: 1.5em;
-    margin-bottom: 1.5em;
+    font-size: 1em;
+    font-weight: bold;
   }
 
   .logo .logo-title {
@@ -86,7 +87,7 @@
     font-weight: bold;
     font-size: 12px;
   }
-  
+
   .logo {
     width: 300px;
   }
@@ -94,6 +95,7 @@
   table {
     border-collapse: collapse;
     width: 100%;
+    border: 0.1em solid #3E4345;
     -fs-table-paginate: paginate;
   }
 
@@ -108,11 +110,17 @@
     text-align: left;
     color: black;
     font-weight: 600;
+    border: 0.1em solid #3E4345;
+    border-left: none;
+    border-right: none;
   }
 
   td {
     vertical-align: baseline;
     word-wrap: break-word;
+    border: 0.1em solid #3E4345;
+    border-left: none;
+    border-right: none;
   }
 
   tbody tr:first-child td {
@@ -123,36 +131,29 @@
     border-bottom: none;
   }
 
-  tbody td {
-    border: 0.1em solid #3E4345;
-  }
-
   tbody tr:last-child td:first-child {
     border-right: none;
   }
 
   thead th {
-    border: 0.1em solid #3E4345;
+    background: #eff5fc;
   }
-  
-  tbody tr:last-child td {
-    border: 0.1em solid #3E4345;
+
+  tbody tr:last-child,
+  tr.footer td {
     font-weight: 600;
     color: black;
+    background: #f7fafc;
+  }
+
+  .report-footer td {
+    font-weight: 600;
+    color: black;
+    background: #d4e5f9;
   }
 
   .payment-type-table:last-child {
-    margin-bottom: 2em;
-  }
-
-  .payment-type-table-footer {
-    border-style: hidden;
-  }
-
-  .payment-type-table-footer tbody tr, .payment-type-table-footer tbody tr td {
-    border-style: hidden;
-    font-weight: 600;
-    color: black;
+    margin-bottom: 1em;
   }
 
   page-after {
@@ -170,10 +171,10 @@
       </div>
       <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
       <div class="report-info">
-        <span th:text="'Report Date: ' + ${reportDate}"></span><br/>
-        <span th:text="'Cash RegID: ' + ${cashRegisterId}"></span><br/>
-        <span th:text="'Closure Session Ref: ' + ${closureRef}"></span><br/>
-        <span th:text="'Closed by: ' + ${closedBy}"></span>
+        <span th:utext="'Report Date <b>' + ${reportDate} + '</b> | '"></span>
+        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b> | '"></span>
+        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b> | '"></span>
+        <span th:utext="'Closed by <b>' + ${closedBy}" + '</b>'></span>
       </div>
     </div>
     <div class="report-body">
@@ -223,67 +224,64 @@
       </div>
       <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
       <div class="report-info">
-        <span th:text="'Report Date: ' + ${reportDate}"></span><br/>
-        <span th:text="'Cash RegID: ' + ${cashRegisterId}"></span><br/>
-        <span th:text="'Closure Session Ref: ' + ${closureRef}"></span><br/>
-        <span th:text="'Closed by: ' + ${closedBy}"></span>
+        <span th:utext="'Report Date <b>' + ${reportDate} + '</b> | '"></span>
+        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b> | '"></span>
+        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b> | '"></span>
+        <span th:utext="'Closed by <b>' + ${closedBy}" + '</b>'></span>
       </div>
     </div>
     <div class="report-body">
-      <div th:each="detail: ${detailsReport}">
-        <h6 class="payment-type-detail" th:text="${detail.paymentName + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
-        </h6>
-        <table class="payment-type-table">
-          <thead>
-            <tr>
-              <th style="width: 100px">Date</th>
-              <th style="width: 100px">Time</th>
-              <th style="width: 100px">Room</th>
-              <th style="width: 150px">Guest</th>
-              <th style="width: 150px">Amount</th>
-              <th style="width: 300px">Reference</th>
-              <th style="width: 250px">Add. Text</th>
-              <th style="width: 150px">User</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each="transaction: ${detail.transactions}">
-              <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'dd/MM/yyyy')}"></td>
-              <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'HH:mm')}"></td>
-              <td th:text="${transaction.room}"></td>
-              <td th:text="${transaction.guest}"></td>
-              <td th:text="${#numbers.formatInteger(transaction.amount,1,'COMMA')}"></td>
-              <td th:text="${transaction.reference}"></td>
-              <td th:text="${transaction.note}"></td>
-              <td th:text="${transaction.employeeName}"></td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td th:text="${#numbers.formatInteger(detail.totalAmount,1,'COMMA')}"></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="report-footer">
-      <hr/>
-      <table class="payment-type-table-footer">
-        <tbody>
+      <table class="payment-type-table">
+        <thead>
           <tr>
-            <td style="width: 100px">Total</td>
-            <td style="width: 100px"></td>
-            <td style="width: 100px"></td>
-            <td style="width: 170px"></td>
-            <td style="width: 150px" th:text="${#numbers.formatInteger(totalAmount,1,'COMMA')}"></td>
-            <td style="width: 300px"></td>
-            <td style="width: 300px"></td>
-            <td style="width: 100px"></td>
+            <th style="width: 100px">Date</th>
+            <th style="width: 100px">Time</th>
+            <th style="width: 100px">Room</th>
+            <th style="width: 150px">Guest</th>
+            <th style="width: 150px">Amount</th>
+            <th style="width: 300px">Reference</th>
+            <th style="width: 250px">Add. Text</th>
+            <th style="width: 150px">User</th>
+          </tr>
+        </thead>
+        <tbody th:each="detail: ${detailsReport}">
+          <tr>
+            <td colspan="8">
+              <p class="payment-type-detail" th:text="${detail.paymentName + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
+              </p>
+            </td>
+          </tr>
+          <tr th:each="transaction: ${detail.transactions}">
+            <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'dd/MM/yyyy')}"></td>
+            <td th:text="${#dates.format(new java.util.Date(transaction.createdAt), 'HH:mm')}"></td>
+            <td th:text="${transaction.room}"></td>
+            <td th:text="${transaction.guest}"></td>
+            <td th:text="${#numbers.formatInteger(transaction.amount,1,'COMMA')}"></td>
+            <td th:text="${transaction.reference}"></td>
+            <td th:text="${transaction.note}"></td>
+            <td th:text="${transaction.employeeName}"></td>
+          </tr>
+          <tr class="footer">
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td th:text="${#numbers.formatInteger(detail.totalAmount,1,'COMMA')}"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tbody class="report-footer">
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td th:text="${#numbers.formatInteger(totalAmount,1,'COMMA')}"></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

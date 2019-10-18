@@ -1,183 +1,182 @@
 <html>
+
 <head>
-<style>
-  @font-face {
-    font-family: 'IBM Plex Sans';
-    font-weight: normal;
-    font-style: normal;
-    src: url(https://raw.githubusercontent.com/IBM/plex/master/IBM-Plex-Sans/fonts/complete/ttf/IBMPlexSans-Light.ttf);
-  }
+  <style>
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-weight: normal;
+      font-style: normal;
+      src: url(https://raw.githubusercontent.com/IBM/plex/master/IBM-Plex-Sans/fonts/complete/ttf/IBMPlexSans-Light.ttf);
+    }
 
-  @font-face {
-    font-family: 'IBM Plex Sans';
-    font-weight: bold;
-    font-style: normal;
-    src: url(https://raw.githubusercontent.com/IBM/plex/blob/master/IBM-Plex-Sans/fonts/complete/ttf/IBMPlexSans-Bold.ttf?raw=true);
-  }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-weight: bold;
+      font-style: normal;
+      src: url(https://raw.githubusercontent.com/IBM/plex/blob/master/IBM-Plex-Sans/fonts/complete/ttf/IBMPlexSans-Bold.ttf?raw=true);
+    }
 
-  @font-face {
-    font-family: 'Playfair Display';
-    font-weight: normal;
-    font-style: normal;
-    src: url(http://themes.googleusercontent.com/static/fonts/playfairdisplay/v7/2NBgzUtEeyB-Xtpr9bm1Cczai8e7xzqnKiVb1EwOy0E.ttf);
-  }
-  
-  @page {
-    size: a4 landscape;
-    margin: 0px 20px 50px 20px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    @bottom-center {
-      content: 'Page 'counter(page);
+    @font-face {
+      font-family: 'Playfair Display';
+      font-weight: normal;
+      font-style: normal;
+      src: url(http://themes.googleusercontent.com/static/fonts/playfairdisplay/v7/2NBgzUtEeyB-Xtpr9bm1Cczai8e7xzqnKiVb1EwOy0E.ttf);
+    }
+
+    @page {
+      size: a4 landscape;
+      margin: 20px 20px 50px 20px;
       font-family: 'IBM Plex Sans', sans-serif;
+
+      @bottom-center {
+        content: 'Page 'counter(page);
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 12px;
+      }
+    }
+
+    html,
+    body {
+      font-size: 12px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: black;
+    }
+
+    .container {
+      padding: 3em 3em 1.5em 3em;
+      min-height: 90vh;
+      display: block;
+    }
+
+    .report-header {
+      display: table;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1em;
+    }
+
+    .report-header>* {
+      display: block;
+    }
+
+    .report-header img {
+      width: 8.9em;
+      height: 5.6em;
+      display: block;
+      margin-bottom: 0.7em;
+    }
+
+    .report-header .page-title {
+      text-align: center;
+      font-size: 2.5em;
+      font-family: 'Playfair Display', serif;
+      color: black;
+    }
+
+    .report-header .report-info {
+      vertical-align: bottom;
+      text-align: right;
+    }
+
+    .report-body .payment-type-detail {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .logo .logo-title {
+      color: #2B3A8B;
+      font-weight: bold;
       font-size: 12px;
     }
-  }
 
-  html,
-  body {
-    font-size: 10px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: black;
-  }
+    .logo {
+      width: 300px;
+    }
 
-  .container {
-    padding: 3em 3em 1.5em 3em;
-    min-height: 90vh;
-    display: block;
-  }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 0.1em solid #3E4345;
+      -fs-table-paginate: paginate;
+    }
 
-  .report-header {
-    display: table;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 3em;
-  }
+    th,
+    td {
+      padding: 0.85em;
+      font-style: normal;
+      font-weight: normal;
+    }
 
-  .report-header>* {
-    display: table-cell;
-  }
+    th {
+      text-align: left;
+      color: black;
+      font-weight: 600;
+      border: 0.1em solid #3E4345;
+      border-left: none;
+      border-right: none;
+    }
 
-  .report-header img {
-    width: 8.9em;
-    height: 5.6em;
-    display: block;
-    margin-bottom: 0.7em;
-  }
+    td {
+      vertical-align: baseline;
+      word-wrap: break-word;
+      border: 0.1em solid #3E4345;
+      border-left: none;
+      border-right: none;
+    }
 
-  .report-header .page-title {
-    text-align: center;
-    font-size: 2.5em;
-    font-family: 'Playfair Display', serif;
-    color: black;
-  }
+    tbody tr:first-child td {
+      border-top: none;
+    }
 
-  .report-header .report-info {
-    vertical-align: bottom;
-    text-align: right;
-  }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
 
-  .report-body .payment-type-detail {
-    font-size: 1.5em;
-    margin-bottom: 1.5em;
-  }
+    tbody tr:last-child td:first-child {
+      border-right: none;
+    }
 
-  .logo .logo-title {
-    color: #2B3A8B;
-    font-weight: bold;
-    font-size: 12px;
-  }
+    thead th {
+      background: #eff5fc;
+    }
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    -fs-table-paginate: paginate;
-  }
+    tbody tr:last-child,
+    tr.footer td {
+      font-weight: 600;
+      color: black;
+      background: #f7fafc;
+    }
 
-  th,
-  td {
-    padding: 0.85em;
-    font-style: normal;
-    font-weight: normal;
-  }
+    .report-footer td {
+      font-weight: 600;
+      color: black;
+      background: #d4e5f9;
+    }
 
-  th {
-    text-align: left;
-    color: black;
-    font-weight: 600;
-  }
+    .payment-type-table:last-child {
+      margin-bottom: 2em;
+    }
 
-  td {
-    vertical-align: baseline;
-    word-wrap: break-word;
-  }
-
-  tbody tr:first-child td {
-    border-top: none;
-  }
-
-  tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  tbody td {
-    border: 0.1em solid #3E4345;
-  }
-
-  tfoot {
-    font-weight: 600;
-    color: black;
-  }
-
-  tfoot tr td:first-child {
-    border-right: none;
-  }
-
-  tfoot tr td {
-    font-weight: 600;
-  }
-
-  thead th,
-  tfoot tr td {
-    border: 0.1em solid #3E4345;
-  }
-
-  .payment-type-table:last-child {
-    margin-bottom: 2em;
-  }
-
-  .payment-type-table-footer {
-    border-style: hidden;
-  }
-
-  .payment-type-table-footer tbody tr, .payment-type-table-footer tbody tr td {
-    border-style: hidden;
-    font-weight: 600;
-    color: black;
-  }
-  .payment-type-table-footer thead, .payment-type-table-footer tfoot {
-    visibility: collapse;
-    border-style: hidden;
-  }
-  
-  page-after {
-    display: block;
-    page-break-after: always;	
-  }
-</style>
+    page-after {
+      display: block;
+      page-break-after: always;
+    }
+  </style>
 </head>
+
 <body>
   <div class="container">
     <div class="report-header">
       <div class="logo">
-        <img src="https://raw.githubusercontent.com/kms-duvo/hms-cash-closure-report/master/vinpearl-logo-01.png"/>
+        <img src="https://raw.githubusercontent.com/kms-duvo/hms-cash-closure-report/master/vinpearl-logo-01.png" />
         <span class="logo-title">PHU QUOC PARADISE RESORT &amp; VILLAS</span>
       </div>
       <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
       <div class="report-info">
-        <span>Report Date: 14:26 30/08/2019</span><br/>
-        <span>Cash RegID: 123</span><br/>
-        <span>Closure Session Ref: 66</span><br/>
-        <span>Closed by: User2</span>
+        <span>Report Date <b>14:26, 30/08/2019</b> | </span>
+        <span>Cash RegID <b>123</b> | </span>
+        <span>Closure Session Ref <b>66</b> | </span>
+        <span>Closed by <b>User2</b></span>
       </div>
     </div>
     <div class="report-body">
@@ -213,9 +212,6 @@
             <td>0</td>
             <td></td>
           </tr>
-        </tbody>
-
-        <tfoot>
           <tr>
             <td>Total</td>
             <td>25,000,000</td>
@@ -225,31 +221,28 @@
             <td>0</td>
             <td></td>
           </tr>
-        </tfoot>
+        </tbody>
       </table>
     </div>
   </div>
-  
+
   <page-after></page-after>
 
   <div class="container">
     <div class="report-header">
       <div class="logo">
-        <img src="https://raw.githubusercontent.com/kms-duvo/hms-cash-closure-report/master/vinpearl-logo-01.png"/>
+        <img src="https://raw.githubusercontent.com/kms-duvo/hms-cash-closure-report/master/vinpearl-logo-01.png" />
         <span class="logo-title">PHU QUOC PARADISE RESORT &amp; VILLAS</span>
       </div>
       <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
       <div class="report-info">
-        <span>Report Date: 14:26 30/08/2019</span><br/>
-        <span>Cash RegID: 123</span><br/>
-        <span>Closure Session Ref: 66</span><br/>
-        <span>Closed by: User2</span>
+        <span>Report Date <b>14:26, 30/08/2019</b> | </span>
+        <span>Cash RegID <b>123</b> | </span>
+        <span>Closure Session Ref <b>66</b> | </span>
+        <span>Closed by <b>User2</b></span>
       </div>
     </div>
     <div class="report-body">
-      <h6 class="payment-type-detail">
-        Cash VND - Start Float: 20,000,000
-      </h6>
       <table class="payment-type-table">
         <thead>
           <tr>
@@ -266,6 +259,13 @@
 
         <tbody>
           <tr>
+            <td colspan="8">
+              <p class="payment-type-detail">
+                Cash VND - Start Float: 20,000,000
+              </p>
+            </td>
+          </tr>
+          <tr>
             <td>01/07/2019</td>
             <td>14:20</td>
             <td>203</td>
@@ -285,11 +285,7 @@
             <td></td>
             <td>User 1</td>
           </tr>
-
-        </tbody>
-
-        <tfoot>
-          <tr>
+          <tr class="footer">
             <td>Total</td>
             <td></td>
             <td></td>
@@ -299,27 +295,15 @@
             <td></td>
             <td></td>
           </tr>
-        </tfoot>
-      </table>
-
-      <h6 class="payment-type-detail">
-        American Express - Start Float: 5,000,000
-      </h6>
-      <table class="payment-type-table">
-        <thead>
-          <tr>
-            <th style="width: 100px">Date</th>
-            <th style="width: 100px">Time</th>
-            <th style="width: 100px">Room</th>
-            <th style="width: 150px">Guest</th>
-            <th style="width: 150px">Amount</th>
-            <th style="width: 300px">Reference</th>
-            <th style="width: 300px">Add. Text</th>
-            <th style="width: 100px">User</th>
-          </tr>
-        </thead>
-
+        </tbody>
         <tbody>
+          <tr>
+            <td colspan="8">
+              <p class="payment-type-detail">
+                American Express - Start Float: 5,000,000
+              </p>
+            </td>
+          </tr>
           <tr>
             <td>01/07/2019</td>
             <td>17:30</td>
@@ -330,10 +314,7 @@
             <td></td>
             <td>User 2</td>
           </tr>
-        </tbody>
-
-        <tfoot>
-          <tr>
+          <tr class="footer">
             <td>Total</td>
             <td></td>
             <td></td>
@@ -343,26 +324,21 @@
             <td></td>
             <td></td>
           </tr>
-        </tfoot>
-      </table>
-    </div>
-    <div class="report-footer">
-      <hr/>
-      <table class="payment-type-table-footer">
-        <tbody>
+        </tbody>
+        <tbody class="report-footer">
           <tr>
-            <td style="width: 100px">Total</td>
-            <td style="width: 100px"></td>
-            <td style="width: 100px"></td>
-            <td style="width: 170px"></td>
-            <td style="width: 150px">45,000,000</td>
-            <td style="width: 300px"></td>
-            <td style="width: 300px"></td>
-            <td style="width: 100px"></td>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>45,000,000</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
 </body>
+
 </html>
