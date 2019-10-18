@@ -112,7 +112,6 @@
     text-align: left;
     color: black;
     font-weight: 600;
-    border: 0.1em solid #3E4345;
     border-left: none;
     border-right: none;
   }
@@ -173,9 +172,9 @@
       </div>
       <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
       <div class="report-info">
-        <span th:utext="'Report Date <b>' + ${reportDate} + '</b> | '"></span>
-        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b> | '"></span>
-        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b> | '"></span>
+        <span th:utext="'Report Date <b>' + ${reportDate} + '</b>   |   '"></span>
+        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b>   |   '"></span>
+        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b>   |   '"></span>
         <span th:utext="'Closed by <b>' + ${closedBy} + '</b>'"></span>
       </div>
     </div>
@@ -226,9 +225,9 @@
       </div>
       <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
       <div class="report-info">
-        <span th:utext="'Report Date <b>' + ${reportDate} + '</b> | '"></span>
-        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b> | '"></span>
-        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b> | '"></span>
+        <span th:utext="'Report Date <b>' + ${reportDate} + '</b>   |   '"></span>
+        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b>   |   '"></span>
+        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b>   |   '"></span>
         <span th:utext="'Closed by <b>' + ${closedBy} + '</b>'"></span>
       </div>
     </div>
@@ -249,8 +248,8 @@
         <tbody th:each="detail: ${detailsReport}">
           <tr>
             <td colspan="8">
-              <p class="payment-type-detail" th:text="${detail.paymentName + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
-              </p>
+              <div class="payment-type-detail" th:text="${detail.paymentName + ' - Start Float: ' + #numbers.formatInteger(detail.startFloat,1,'COMMA')}">
+              </div>
             </td>
           </tr>
           <tr th:each="transaction: ${detail.transactions}">
