@@ -147,8 +147,7 @@
     margin-right: 0px;
   }
 
-  page-before {
-    display: block;
+  .page-before {
     page-break-before: always;	
   }
 </style>
@@ -208,9 +207,7 @@
     </div>
   </div>
 
-  <page-before></page-before>
-
-  <div class="container">
+  <div class="container page-before">
     <div class="report-header">
       <div class="logo">
         <img th:src="@{${logo}}"/>
