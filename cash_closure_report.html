@@ -44,8 +44,6 @@
   }
 
   .container {
-    padding: 1em 3em 1.5em 3em;
-    min-height: 90vh;
     display: block;
   }
 
@@ -146,13 +144,13 @@
   .report-info span:last-child {
     margin-right: 0px;
   }
-
-  .page-before {
-    page-break-before: always;	
+  
+  .report-info label {
+    margin-right: 0.5em;
   }
   
   .page-after {
-    page-break-after: always;	
+    page-break-after: always;
   }
 </style>
 </head>
@@ -165,13 +163,17 @@
       </div>
       <h1 class="page-title">CASH CLOSURE SUMMARY REPORT</h1>
       <div class="report-info">
-        <span th:utext="'Report Date <b>' + ${reportDate} + '</b>'"></span>
+        <label>Report Date</label>
+        <span th:utext="'<b>' + ${reportDate} + '</b>'"></span>
         <span>|</span>
-        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b>'"></span>
+        <label>Cash RegID</label>
+        <span th:utext="'<b>' + ${cashRegisterId} + '</b>'"></span>
         <span>|</span>
-        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b>'"></span>
+        <label>Closure Session Ref</label>
+        <span th:utext="'<b>' + ${closureRef} + '</b>'"></span>
         <span>|</span>
-        <span th:utext="'Closed by <b>' + ${closedBy} + '</b>'"></span>
+        <label>Closed by</label>
+        <span th:utext="'<b>' + ${closedBy} + '</b>'"></span>
       </div>
     </div>
     <div class="report-body">
@@ -219,13 +221,17 @@
       </div>
       <h1 class="page-title">CASH CLOSURE DETAILS REPORT</h1>
       <div class="report-info">
-        <span th:utext="'Report Date <b>' + ${reportDate} + '</b>'"></span>
+        <label>Report Date</label>
+        <span th:utext="'<b>' + ${reportDate} + '</b>'"></span>
         <span>|</span>
-        <span th:utext="'Cash RegID <b>' + ${cashRegisterId} + '</b>'"></span>
+        <label>Cash RegID</label>
+        <span th:utext="'<b>' + ${cashRegisterId} + '</b>'"></span>
         <span>|</span>
-        <span th:utext="'Closure Session Ref <b>' + ${closureRef} + '</b>'"></span>
+        <label>Closure Session Ref</label>
+        <span th:utext="'<b>' + ${closureRef} + '</b>'"></span>
         <span>|</span>
-        <span th:utext="'Closed by <b>' + ${closedBy} + '</b>'"></span>
+        <label>Closed by</label>
+        <span th:utext="'<b>' + ${closedBy} + '</b>'"></span>
       </div>
     </div>
     <div class="report-body">
