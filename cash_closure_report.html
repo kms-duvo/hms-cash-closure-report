@@ -150,10 +150,14 @@
   .page-before {
     page-break-before: always;	
   }
+  
+  .page-after {
+    page-break-after: always;	
+  }
 </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container page-after">
     <div class="report-header">
       <div class="logo">
         <img th:src="@{${logo}}"/>
@@ -207,7 +211,7 @@
     </div>
   </div>
 
-  <div class="container page-before">
+  <div class="container">
     <div class="report-header">
       <div class="logo">
         <img th:src="@{${logo}}"/>
