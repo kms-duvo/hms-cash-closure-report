@@ -96,8 +96,11 @@
   table {
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid #3E4345;
     -fs-table-paginate: paginate;
+  }
+  
+  tr {
+    border: 1px solid #3E4345;
   }
 
   th,
@@ -118,7 +121,6 @@
   td {
     vertical-align: baseline;
     word-wrap: break-word;
-    border-top: 1px solid #3E4345;
   }
 
   tbody tr:last-child,
@@ -152,10 +154,6 @@
   
   .page-after {
     page-break-after: always;
-  }
-  
-  tr th:first-child, tr td:first-child, tr th:last-child, tr td:last-child {
-    border: none;
   }
 </style>
 </head>
